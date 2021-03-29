@@ -4,7 +4,16 @@ cd ..
 kubectl create namespace development
 kubectl config set-context --current --namespace=development
 
+helm dep update ./SystemCharts/ClusterResources
+
 helm install cluster-resources ./SystemCharts/ClusterResources --namespace development --wait
+
+declare -a kafka_topics=("topic1")
+
+for topic in "${kafka_topics[@]}"
+do
+   kubectl exec --stdin --tty cluster-resources-kafka-0 -- /opt/bitnami/kafka/bin/kafka-topics.sh -create --topic $topic --bootstrap-server localhost:9092
+done
 
 for dir in ./Source/*/Services/*/
 do

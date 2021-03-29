@@ -1,4 +1,11 @@
 serviceName: Service3
 image: python:3.9.2-alpine3.13
 framework: Python
-commandText: pip install -r requirements.txt; apk add npm; npm install -g nodemon; nodemon -L --watch app.py --exec "python -m debugpy --listen 0.0.0.0:9229 app.py"
+commandText: pip install -r requirements.txt; apk add npm; npm install -g nodemon; nodemon -L --watch app.py --exec "python -u -m debugpy --listen 0.0.0.0:9229 app.py"
+env:
+- name: KAFKA_SERVER_URL
+  value: "cluster-resources-kafka:9092"
+- name: KAFKA_CLIENT_ID
+  value: "service3"
+- name: KAFKA_CONSUMER_GROUP
+  value: "service3"

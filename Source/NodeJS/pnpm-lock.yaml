@@ -1,0 +1,12 @@
+dependencies:
+  kafkajs: 1.15.0
+lockfileVersion: 5.2
+packages:
+  /kafkajs/1.15.0:
+    dev: false
+    engines:
+      node: '>=10.13.0'
+    resolution:
+      integrity: sha512-yjPyEnQCkPxAuQLIJnY5dI+xnmmgXmhuOQ1GVxClG5KTOV/rJcW1qA3UfvyEJKTp/RTSqQnUR3HJsKFvHyTpNg==
+specifiers:
+  kafkajs: ^1.15.0

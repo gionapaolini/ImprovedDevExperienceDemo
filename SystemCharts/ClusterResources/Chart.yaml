@@ -4,3 +4,7 @@ description: Template chart for the solution
 type: application
 version: 0.1.0
 appVersion: 1.16.0
+dependencies:
+- name: kafka
+  version: 11.8.8
+  repository: "https://charts.bitnami.com/bitnami"
