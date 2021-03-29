@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Service2",
+            "type": "coreclr",
+            "request": "attach",
+            "processName": "/app/DotNet/Services/Service2/bin/Debug/netcoreapp3.1/Service2",
+            "justMyCode": false,
+            "pipeTransport": {
+                "pipeProgram": "wsl",
+                "pipeCwd": "${workspaceRoot}",
+                "pipeArgs": [
+                    "./Source/DotNet/debug.sh"
+                ],
+                "debuggerPath": "/vsdbg/vsdbg",
+                "quoteArgs": false
+            },
+            "sourceFileMap": {
+                "/app/DotNet":"${workspaceRoot}/Source/DotNet"
+            }
+            
+        },
+        {
+            "address": "127.0.0.1",
+            "localRoot": "${workspaceFolder}/Source",
+            "name": "Attach to Service1",
+            "port": 9000,
+            "remoteRoot": "/app",
+            "request": "attach",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+    ]
+}

@@ -1,0 +1,1 @@
+pgrep -f "kubectl port-forward service/" | xargs kill

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ lower .Values.serviceName }}
+  labels:
+    app: {{ lower .Values.serviceName }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ lower .Values.serviceName }}
+  template:
+    metadata:
+      labels:
+        app: {{ lower .Values.serviceName }}
+    spec:
+      volumes:
+      - name: app-storage
+        persistentVolumeClaim:
+          claimName: app-volume-claim
+      containers:
+      - name: {{ lower .Values.serviceName }}
+        image: {{ .Values.image }}
+        workingDir: "/app/{{ .Values.framework }}/Services/{{ .Values.serviceName }}"
+        command:
+          - "sh"
+        args:
+          - "-c"
+          - {{ .Values.commandText }}
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/app"
+          name: app-storage
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: SERVICE_NAME
+            value: {{ .Values.serviceName }}   
+        {{- range .Values.env }}
+          - name: {{ .name }}
+            value: {{ .value }}
+        {{- end }}
+        {{- range .Values.envRuntime }}
+          - name: {{ .name }}
+            value: {{ .value }}
+        {{- end }}

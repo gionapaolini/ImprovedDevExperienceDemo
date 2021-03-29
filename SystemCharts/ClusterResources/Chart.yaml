@@ -1,0 +1,6 @@
+apiVersion: v2
+name: SolutionChart
+description: Template chart for the solution
+type: application
+version: 0.1.0
+appVersion: 1.16.0

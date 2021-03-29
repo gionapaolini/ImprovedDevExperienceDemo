@@ -1,0 +1,4 @@
+serviceName: Service1
+image: node:15.8.0-alpine3.11
+framework: NodeJS
+commandText: npm install -g nodemon; nodemon -L --watch app.js --inspect app.js
