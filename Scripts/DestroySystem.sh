@@ -10,4 +10,4 @@ done
 
 kubectl delete namespace development
 
-pgrep -f "kubectl port-forward service/" | xargs kill
+sh Scripts/StopForwardingPorts.sh

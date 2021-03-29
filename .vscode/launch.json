@@ -29,9 +29,23 @@
                 "quoteArgs": false
             },
             "sourceFileMap": {
-                "/app/DotNet":"${workspaceRoot}/Source/DotNet"
+                "/app/DotNet": "${workspaceRoot}/Source/DotNet"
             }
-            
         },
+        {
+            "name": "Attach to Service3",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "host": "127.0.0.1",
+                "port": 8000
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceRoot}/Source/Python",
+                    "remoteRoot": "/app/Python"
+                }
+            ]
+        }
     ]
 }
