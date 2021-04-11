@@ -4,3 +4,6 @@ bin
 obj
 __pycache__
 charts
+**/Python/**/modules
+**/Python/cache
+**/Python/models

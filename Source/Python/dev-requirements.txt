@@ -1,0 +1,3 @@
+-r Services/Service3/requirements.txt
+-r Services/Service4/requirements.txt
+debugpy==1.2.1

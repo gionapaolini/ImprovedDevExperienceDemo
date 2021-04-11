@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: tests
+ labels:
+   app: tests
+spec:
+  volumes:
+  - name: app-storage
+    persistentVolumeClaim:
+      claimName: app-volume-claim
+  initContainers:
+  - name: install-modules-nodejs
+    image: node:15.8.0-alpine3.11
+    imagePullPolicy: IfNotPresent
+    workingDir: /app/NodeJS
+    command:
+      - "sh"
+    args:
+      - "-c"
+      - "npm config set store-dir /app/NodeJS/.pnpm-store; npm install -g pnpm; pnpm install -r"
+    volumeMounts:
+    - mountPath: "/app"
+      name: app-storage
+  - name: install-modules-python
+    image: python:3.6
+    imagePullPolicy: IfNotPresent
+    workingDir: /app/Python
+    command:
+      - "sh"
+    args:
+      - "-c"
+      - "export PYTHONPATH=$PYTHONPATH:/app/Python/modules/lib/python3.6/site-packages; PYTHONUSERBASE=/app/Python/modules pip install --user -r dev-requirements.txt;"
+    volumeMounts:
+    - mountPath: "/app"
+      name: app-storage
+  containers:
+  - name: nodejs-tests
+    image: node:15.8.0-alpine3.11
+    command:
+      - "tail"
+    args:
+      - "-f"
+      - "/dev/null"
+    volumeMounts:
+    - mountPath: "/app"
+      name: app-storage
+    imagePullPolicy: IfNotPresent
+  - name: python-tests
+    image: python:3.6
+    command:
+      - "tail"
+    args:
+      - "-f"
+      - "/dev/null"
+    volumeMounts:
+    - mountPath: "/app"
+      name: app-storage
+    imagePullPolicy: IfNotPresent
+  - name: dotnet-tests
+    image: mcr.microsoft.com/dotnet/sdk:3.1.407-alpine3.13
+    command:
+      - "tail"
+    args:
+      - "-f"
+      - "/dev/null"
+    volumeMounts:
+    - mountPath: "/app"
+      name: app-storage
+    imagePullPolicy: IfNotPresent

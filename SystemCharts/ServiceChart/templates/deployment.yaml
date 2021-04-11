@@ -18,6 +18,21 @@ spec:
       - name: app-storage
         persistentVolumeClaim:
           claimName: app-volume-claim
+      {{ if .Values.commandTextInit }}
+      initContainers:
+      - name: install-modules
+        image: {{ .Values.image }}
+        imagePullPolicy: IfNotPresent
+        workingDir: "/app/{{ .Values.framework }}/Services/{{ .Values.serviceName }}"
+        command:
+          - "sh"
+        args:
+          - "-c"
+          - {{ .Values.commandTextInit }}
+        volumeMounts:
+        - mountPath: "/app"
+          name: app-storage
+      {{ end }}
       containers:
       - name: {{ lower .Values.serviceName }}
         image: {{ .Values.image }}

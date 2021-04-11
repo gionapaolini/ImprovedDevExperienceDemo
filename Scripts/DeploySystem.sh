@@ -1,6 +1,8 @@
 cd $(dirname "$0")
 cd .. 
 
+sh Scripts/DestroySystem.sh
+
 kubectl create namespace development
 kubectl config set-context --current --namespace=development
 
@@ -8,12 +10,15 @@ helm dep update ./SystemCharts/ClusterResources
 
 helm install cluster-resources ./SystemCharts/ClusterResources --namespace development --wait
 
-declare -a kafka_topics=("topic1")
+declare -a kafka_topics=("qa-updated", "intents-updated")
 
 for topic in "${kafka_topics[@]}"
 do
    kubectl exec --stdin --tty cluster-resources-kafka-0 -- /opt/bitnami/kafka/bin/kafka-topics.sh -create --topic $topic --bootstrap-server localhost:9092
 done
+
+kubectl apply -f SystemCharts/TestingPod.yaml
+kubectl wait --for=condition=Ready --timeout=600s pod tests 
 
 for dir in ./Source/*/Services/*/
 do

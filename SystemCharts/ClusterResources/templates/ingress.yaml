@@ -29,4 +29,11 @@ spec:
             name: service3
             port:
               number: 80
+      - path: /service4
+        pathType: Prefix
+        backend:
+          service:
+            name: service4
+            port:
+              number: 80
       

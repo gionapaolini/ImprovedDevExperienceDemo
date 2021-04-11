@@ -46,6 +46,21 @@
                     "remoteRoot": "/app/Python"
                 }
             ]
+        },
+        {
+            "name": "Attach to Service4",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "host": "127.0.0.1",
+                "port": 8001
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceRoot}/Source/Python",
+                    "remoteRoot": "/app/Python"
+                }
+            ]
         }
     ]
 }

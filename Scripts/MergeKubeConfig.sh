@@ -1,2 +1,2 @@
-export KUBECONFIG=~/.kube/config:/mnt/c/Users/{USER}/.kube/config
-kubectl config view --flatten > /mnt/c/Users/{USER}/.kube/config
+export KUBECONFIG=~/.kube/config:/mnt/c/Users/Gio/.kube/config
+kubectl config view --flatten > /mnt/c/Users/Gio/.kube/config

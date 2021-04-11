@@ -1,5 +1,7 @@
 helm uninstall cluster-resources --namespace development
 
+kubectl delete -f SystemCharts/TestingPod.yaml
+
 #Remove all services
 for dir in ./Source/*/Services/*/
 do

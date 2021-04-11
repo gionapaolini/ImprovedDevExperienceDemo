@@ -9,3 +9,5 @@ env:
   value: "service1"
 - name: KAFKA_CONSUMER_GROUP
   value: "service1"
+- name: MONGODB_SERVER_URL
+  value: "mongodb://cluster-resources-mongodb:27017"
