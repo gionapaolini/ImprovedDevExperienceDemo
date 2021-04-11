@@ -42,7 +42,10 @@ def getIntent(projectId):
 def consume():
   consumer = KafkaConsumer('intents-updated', group_id=os.environ['KAFKA_CONSUMER_GROUP'], client_id=os.environ['KAFKA_CLIENT_ID']+str(uuid.uuid4()),bootstrap_servers=[os.environ['KAFKA_SERVER_URL']])
   for msg in consumer:
-    intentMachine.updateData(json.loads(msg.value)["projectId"])
+    try:
+      intentMachine.updateData(json.loads(msg.value)["projectId"])
+    except: 
+      print("An exception occurred") 
 
 Thread(target=consume).start()
 
