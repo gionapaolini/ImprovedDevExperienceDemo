@@ -43,17 +43,5 @@ namespace QAEditor.Controllers
             QAModel doc = await collection.Find(filter).Limit(1).SingleAsync();
             return doc;
         }
-
-        // [HttpPut("intents/{projectId}")]
-        // public async Task<string> Upsert(string projectId, IntentProjectData intentData)
-        // {
-        //     var collection = _db.GetCollection<BsonDocument>("intentprojectdatas");
-        //     var filter = new BsonDocument("projectId", projectId);
-        //     var options = new UpdateOptions() { IsUpsert = true };
-        //     var update = Builders<BsonDocument>.Update.Set("data", intentData.data);
-        //     collection.UpdateOne(filter, update, options);
-        //     await _kafkaService.ProduceMessage("intents-updated", new { projectId = projectId });
-        //     return "OK";
-        // }
     }
 }

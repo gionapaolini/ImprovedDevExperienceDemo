@@ -16,14 +16,6 @@ KafkaProducer.connect();
 const app = express();
 app.use(bodyParser.json())
 
-// app.post('/qa/:projectId', async (req, res) => {
-//   const { projectId } = req.params;
-//   const { data } = req.body;
-//   await QAModel.updateOne({projectId}, {data}, { upsert: true });
-//   KafkaProducer.produceMessage("qa-updated", { projectId });
-//   res.status(200).json();
-// })
-
 app.post('/:projectId', async (req, res) => {
   const { projectId } = req.params;
   const { data } = req.body;
@@ -31,12 +23,6 @@ app.post('/:projectId', async (req, res) => {
   KafkaProducer.produceMessage("intents-updated", { projectId });
   res.status(200).json();
 })
-
-// app.get('/qa/:projectId', async (req, res) => {
-//   const { projectId } = req.params;
-//   const data = await QAModel.findOne({projectId});
-//   res.status(200).json(data);
-// })
 
 app.get('/:projectId', async (req, res) => {
   const { projectId } = req.params;
