@@ -10,7 +10,7 @@ helm dep update ./SystemCharts/ClusterResources
 
 helm install cluster-resources ./SystemCharts/ClusterResources --namespace development --wait
 
-declare -a kafka_topics=("qa-updated", "intents-updated")
+declare -a kafka_topics=("qa-updated" "intents-updated")
 
 for topic in "${kafka_topics[@]}"
 do

@@ -23,7 +23,7 @@ namespace QAEditor.Controllers
             _db = db;
         }
 
-        [HttpPut("qas/{projectId}")]
+        [HttpPut("{projectId}")]
         public async Task<string> Upsert(string projectId, QAModel qaData)
         {
             var collection = _db.GetCollection<BsonDocument>("qamodels");
@@ -33,6 +33,15 @@ namespace QAEditor.Controllers
             collection.UpdateOne(filter, update, options);
             await _kafkaService.ProduceMessage("qa-updated", new { projectId = projectId });
             return "OK";
+        }
+
+        [HttpGet("{projectId}")]
+        public async Task<QAModel> Upsert(string projectId)
+        { 
+            var collection = _db.GetCollection<QAModel>("qamodels");
+            var filter = new BsonDocument("projectId", projectId);
+            QAModel doc = await collection.Find(filter).Limit(1).SingleAsync();
+            return doc;
         }
 
         // [HttpPut("intents/{projectId}")]
