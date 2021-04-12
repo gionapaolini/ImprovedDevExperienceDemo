@@ -1,4 +1,4 @@
-serviceName: Service2
+serviceName: QAEditor
 image: mcr.microsoft.com/dotnet/sdk:3.1.407-alpine3.13
 framework: DotNet
 commandText: wget https://aka.ms/getvsdbgsh -O - 2>/dev/null | /bin/sh /dev/stdin -v vs2019 -l /vsdbg; dotnet watch run --urls=http://0.0.0.0:80/
@@ -6,8 +6,8 @@ env:
 - name: KAFKA_SERVER_URL
   value: "cluster-resources-kafka:9092"
 - name: KAFKA_CLIENT_ID
-  value: "service2"
+  value: "qaeditor"
 - name: KAFKA_CONSUMER_GROUP
-  value: "service2"
+  value: "qaeditor"
 - name: MONGODB_SERVER_URL
   value: "mongodb://cluster-resources-mongodb:27017"

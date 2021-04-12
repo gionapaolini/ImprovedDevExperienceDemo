@@ -1,4 +1,4 @@
-serviceName: Service3
+serviceName: QAService
 image: python:3.6
 framework: Python
 commandText: export PYTHONPATH=$PYTHONPATH:/app/Python/modules/lib/python3.6/site-packages; apt-get update; apt-get install -y npm; npm install -g nodemon; nodemon -L --watch app.py --exec "python -u -m debugpy --listen 0.0.0.0:9229 app.py"
@@ -6,9 +6,9 @@ env:
 - name: KAFKA_SERVER_URL
   value: "cluster-resources-kafka:9092"
 - name: KAFKA_CLIENT_ID
-  value: "service3"
+  value: "qaservice"
 - name: KAFKA_CONSUMER_GROUP
-  value: "service3"
+  value: "qaservice"
 - name: TRANSFORMERS_CACHE
   value: "/app/Python/models"
 - name: MONGODB_SERVER_URL

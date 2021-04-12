@@ -6,9 +6,9 @@ using Microsoft.Extensions.Hosting;
 using MongoDB.Driver;
 using Models;
 using System;
-using Service2.Helpers;
+using QAEditor.Helpers;
 
-namespace Service2
+namespace QAEditor
 {
     public class Startup
     {

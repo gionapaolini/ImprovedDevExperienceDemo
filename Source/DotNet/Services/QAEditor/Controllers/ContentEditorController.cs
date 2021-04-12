@@ -7,9 +7,9 @@ using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using Models;
-using Service2.Helpers;
+using QAEditor.Helpers;
 
-namespace Service2.Controllers
+namespace QAEditor.Controllers
 {
     [ApiController]
     [Route("")]
@@ -35,16 +35,16 @@ namespace Service2.Controllers
             return "OK";
         }
 
-        [HttpPut("intents/{projectId}")]
-        public async Task<string> Upsert(string projectId, IntentProjectData intentData)
-        {
-            var collection = _db.GetCollection<BsonDocument>("intentprojectdatas");
-            var filter = new BsonDocument("projectId", projectId);
-            var options = new UpdateOptions() { IsUpsert = true };
-            var update = Builders<BsonDocument>.Update.Set("data", intentData.data);
-            collection.UpdateOne(filter, update, options);
-            await _kafkaService.ProduceMessage("intents-updated", new { projectId = projectId });
-            return "OK";
-        }
+        // [HttpPut("intents/{projectId}")]
+        // public async Task<string> Upsert(string projectId, IntentProjectData intentData)
+        // {
+        //     var collection = _db.GetCollection<BsonDocument>("intentprojectdatas");
+        //     var filter = new BsonDocument("projectId", projectId);
+        //     var options = new UpdateOptions() { IsUpsert = true };
+        //     var update = Builders<BsonDocument>.Update.Set("data", intentData.data);
+        //     collection.UpdateOne(filter, update, options);
+        //     await _kafkaService.ProduceMessage("intents-updated", new { projectId = projectId });
+        //     return "OK";
+        // }
     }
 }

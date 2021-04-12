@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Service2": {
+    "QAEditor": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

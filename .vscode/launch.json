@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to Service1",
+            "name": "Attach to IntentEditor",
             "address": "127.0.0.1",
             "localRoot": "${workspaceFolder}/Source",
             "port": 9000,
@@ -14,10 +14,10 @@
             "type": "pwa-node"
         },
         {
-            "name": "Attach to Service2",
+            "name": "Attach to QAEditor",
             "type": "coreclr",
             "request": "attach",
-            "processName": "/app/DotNet/Services/Service2/bin/Debug/netcoreapp3.1/Service2",
+            "processName": "/app/DotNet/Services/QAEditor/bin/Debug/netcoreapp3.1/QAEditor",
             "justMyCode": false,
             "pipeTransport": {
                 "pipeProgram": "wsl",
@@ -33,7 +33,7 @@
             }
         },
         {
-            "name": "Attach to Service3",
+            "name": "Attach to QAService",
             "type": "python",
             "request": "attach",
             "connect": {
@@ -48,7 +48,7 @@
             ]
         },
         {
-            "name": "Attach to Service4",
+            "name": "Attach to IntentClassifier",
             "type": "python",
             "request": "attach",
             "connect": {

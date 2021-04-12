@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Confluent.Kafka;
 
-namespace Service2.Helpers
+namespace QAEditor.Helpers
 {
     public interface IKafkaService
     {

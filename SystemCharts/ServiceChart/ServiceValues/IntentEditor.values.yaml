@@ -1,4 +1,4 @@
-serviceName: Service1
+serviceName: IntentEditor
 image: node:15.8.0-alpine3.11
 framework: NodeJS
 commandText: npm install -g nodemon; nodemon -L --watch app.js --inspect app.js
@@ -6,8 +6,8 @@ env:
 - name: KAFKA_SERVER_URL
   value: "cluster-resources-kafka:9092"
 - name: KAFKA_CLIENT_ID
-  value: "service1"
+  value: "intenteditor"
 - name: KAFKA_CONSUMER_GROUP
-  value: "service1"
+  value: "intenteditor"
 - name: MONGODB_SERVER_URL
   value: "mongodb://cluster-resources-mongodb:27017"

@@ -8,32 +8,32 @@ spec:
   rules:
   - http:
       paths:
-      - path: /service1
+      - path: /intenteditor
         pathType: Prefix
         backend:
           service:
-            name: service1
+            name: intenteditor
             port:
               number: 80
-      - path: /service2
+      - path: /qaeditor
         pathType: Prefix
         backend:
           service:
-            name: service2
+            name: qaeditor
             port:
               number: 80
-      - path: /service3
+      - path: /qaservice
         pathType: Prefix
         backend:
           service:
-            name: service3
+            name: qaservice
             port:
               number: 80
-      - path: /service4
+      - path: /intentclassifier
         pathType: Prefix
         backend:
           service:
-            name: service4
+            name: intentclassifier
             port:
               number: 80
       
