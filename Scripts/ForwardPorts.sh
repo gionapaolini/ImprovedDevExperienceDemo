@@ -1,5 +1,5 @@
 i=8000
-for dir in ./Source/Python/Services/*/
+for dir in ./Source/NodeJS/Services/*/
 do
     dir_name=$(basename $dir)
     service_name=$(echo $dir_name | tr '[:upper:]' '[:lower:]')
@@ -8,7 +8,7 @@ do
 done
 
 i=9000
-for dir in ./Source/NodeJS/Services/*/
+for dir in ./Source/Python/Services/*/
 do
     dir_name=$(basename $dir)
     service_name=$(echo $dir_name | tr '[:upper:]' '[:lower:]')

@@ -18,24 +18,12 @@ spec:
       - name: app-storage
         persistentVolumeClaim:
           claimName: app-volume-claim
-      {{ if .Values.commandTextInit }}
-      initContainers:
-      - name: install-modules
-        image: {{ .Values.image }}
-        imagePullPolicy: IfNotPresent
-        workingDir: "/app/{{ .Values.framework }}/Services/{{ .Values.serviceName }}"
-        command:
-          - "sh"
-        args:
-          - "-c"
-          - {{ .Values.commandTextInit }}
-        volumeMounts:
-        - mountPath: "/app"
-          name: app-storage
-      {{ end }}
       containers:
       - name: {{ lower .Values.serviceName }}
         image: {{ .Values.image }}
+        volumeMounts:
+        - mountPath: "/app"
+          name: app-storage
         workingDir: "/app/{{ .Values.framework }}/Services/{{ .Values.serviceName }}"
         command:
           - "sh"
@@ -44,18 +32,11 @@ spec:
           - {{ .Values.commandText }}
         ports:
         - containerPort: 80
-        volumeMounts:
-        - mountPath: "/app"
-          name: app-storage
         imagePullPolicy: IfNotPresent
         env:
           - name: SERVICE_NAME
             value: {{ .Values.serviceName }}   
         {{- range .Values.env }}
-          - name: {{ .name }}
-            value: {{ .value }}
-        {{- end }}
-        {{- range .Values.envRuntime }}
           - name: {{ .name }}
             value: {{ .value }}
         {{- end }}

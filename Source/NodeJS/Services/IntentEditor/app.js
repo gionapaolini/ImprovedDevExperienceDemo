@@ -21,7 +21,7 @@ app.post('/:projectId', async (req, res) => {
   const { data } = req.body;
   await IntentProjectData.updateOne({projectId}, {data}, { upsert: true });
   KafkaProducer.produceMessage("intents-updated", { projectId });
-  res.status(200).json();
+  res.status(200).json("Data was updated!!!!!!!!!!!!!!!!!!!");
 })
 
 app.get('/:projectId', async (req, res) => {
