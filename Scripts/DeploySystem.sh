@@ -18,7 +18,7 @@ do
 done
 
 kubectl apply -f SystemCharts/TestingPod.yaml
-kubectl wait --for=condition=Ready --timeout=600s pod tests 
+kubectl wait --for=condition=Ready --timeout=6000s pod tests 
 
 for dir in ./Source/*/Services/*/
 do
