@@ -10,6 +10,40 @@
   - [How to create a new service](#how-to-create-a-new-service)
 
 # Getting started
+## *If you have Windows, you need additional steps first.* 
+
+1. [Enable wsl2](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+2. Set default wsl version to 2
+   ```
+   wsl --set-default-version 2
+   ```
+3. Install [Ubuntu](https://www.microsoft.com/it-it/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab) for Windows (make sure to run it once to initialize and create an account)
+4. Once installed, make sure the version is correct: 
+   ```
+   wsl --list -v
+
+   
+     NAME        STATE       VERSION
+     Ubuntu      Running     2 
+     ...
+   ```
+5. Set Ubuntu as your default distribution:
+   ```
+   wsl --setdefault Ubuntu
+   ```
+6. Restart Docker (so it will pickup Ubuntu as default WSL)
+7. Run the disto:
+   ```
+   wsl
+   ```
+8. Make sure docker is installed
+   ```
+   docker --version
+   ```
+9.  Install the dependencies inside the distro:
+       - Install [helm](https://helm.sh/docs/intro/install/) 
+       - Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) 
+       - Install [K3d](https://k3d.io/)
 
 ## Requirements
 
