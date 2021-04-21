@@ -9,7 +9,7 @@ env:
   value: "qaservice"
 - name: KAFKA_CONSUMER_GROUP
   value: "qaservice"
-- name: SENTENCE_TRANSFORMERS_HOME
+- name: TRANSFORMERS_CACHE
   value: "/app/Python/models"
 - name: MONGODB_SERVER_URL
   value: "mongodb://cluster-resources-mongodb:27017"
