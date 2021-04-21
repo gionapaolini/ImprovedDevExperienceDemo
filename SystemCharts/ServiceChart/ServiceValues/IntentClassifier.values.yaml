@@ -9,7 +9,7 @@ env:
   value: "intentclassifier"
 - name: KAFKA_CONSUMER_GROUP
   value: "intentclassifier"
-- name: TRANSFORMERS_CACHE
+- name: SENTENCE_TRANSFORMERS_HOME
   value: "/app/Python/models"
 - name: MONGODB_SERVER_URL
   value: "mongodb://cluster-resources-mongodb:27017"
